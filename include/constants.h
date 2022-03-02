@@ -20,12 +20,14 @@
     \namespace HybridAStar
 */
 
-namespace HybridAStar {
+namespace HybridAStar
+{
 /*!
     \brief The namespace that wraps constants.h
     \namespace Constants
 */
-namespace Constants {
+namespace Constants
+{
 // _________________
 // CONFIG FLAGS
 
@@ -79,9 +81,10 @@ static const float cellSize = 1;
   \brief [m] --- The tie breaker breaks ties between nodes expanded in the same cell
 
 
-  As the cost-so-far are bigger than the cost-to-come it is reasonbale to believe that the algorithm would prefer the predecessor rather than the successor.
-  This would lead to the fact that the successor would never be placed and the the one cell could only expand one node. The tieBreaker artificially increases the cost of the predecessor
-  to allow the successor being placed in the same cell.
+  As the cost-so-far are bigger than the cost-to-come it is reasonbale to believe that the algorithm would prefer the
+  predecessor rather than the successor. This would lead to the fact that the successor would never be placed and the
+  the one cell could only expand one node. The tieBreaker artificially increases the cost of the predecessor to allow
+  the successor being placed in the same cell.
 */
 static const float tieBreaker = 0.01;
 
@@ -101,7 +104,6 @@ static const float dubinsShotDistance = 100;
 /// [m] --- The step size for the analytical solution (Dubin's shot) primarily relevant for collision checking
 static const float dubinsStepSize = 1;
 
-
 // ______________________
 // DUBINS LOOKUP SPECIFIC
 
@@ -110,33 +112,34 @@ static const int dubinsWidth = 15;
 /// [m] --- The area of the lookup for the analytical solution (Dubin's shot)
 static const int dubinsArea = dubinsWidth * dubinsWidth;
 
-
 // _________________________
 // COLLISION LOOKUP SPECIFIC
 
 /// [m] -- The bounding box size length and width to precompute all possible headings
-static const int bbSize = std::ceil((sqrt(width * width + length* length) + 4) / cellSize);
+static const int bbSize = std::ceil((sqrt(width * width + length * length) + 4) / cellSize);
 /// [#] --- The sqrt of the number of discrete positions per cell
 static const int positionResolution = 10;
 /// [#] --- The number of discrete positions per cell
 static const int positions = positionResolution * positionResolution;
 /// A structure describing the relative position of the occupied cell based on the center of the vehicle
-struct relPos {
-  /// the x position relative to the center
-  int x;
-  /// the y position relative to the center
-  int y;
+struct relPos
+{
+    /// the x position relative to the center
+    int x;
+    /// the y position relative to the center
+    int y;
 };
 /// A structure capturing the lookup for each theta configuration
-struct config {
-  /// the number of cells occupied by this configuration of the vehicle
-  int length;
-  /*!
-     \var relPos pos[64]
-     \brief The maximum number of occupied cells
-     \todo needs to be dynamic
-  */
-  relPos pos[64];
+struct config
+{
+    /// the number of cells occupied by this configuration of the vehicle
+    int length;
+    /*!
+       \var relPos pos[64]
+       \brief The maximum number of occupied cells
+       \todo needs to be dynamic
+    */
+    relPos pos[64];
 };
 
 // _________________
@@ -147,13 +150,14 @@ static const float minRoadWidth = 2;
 // ____________________________________________
 // COLOR DEFINITIONS FOR VISUALIZATION PURPOSES
 /// A structure to express colors in RGB values
-struct color {
-  /// the red portion of the color
-  float red;
-  /// the green portion of the color
-  float green;
-  /// the blue portion of the color
-  float blue;
+struct color
+{
+    /// the red portion of the color
+    float red;
+    /// the green portion of the color
+    float green;
+    /// the blue portion of the color
+    float blue;
 };
 /// A definition for a color used for visualization
 static constexpr color teal = {102.f / 255.f, 217.f / 255.f, 239.f / 255.f};
@@ -165,8 +169,7 @@ static constexpr color orange = {253.f / 255.f, 151.f / 255.f, 31.f / 255.f};
 static constexpr color pink = {249.f / 255.f, 38.f / 255.f, 114.f / 255.f};
 /// A definition for a color used for visualization
 static constexpr color purple = {174.f / 255.f, 129.f / 255.f, 255.f / 255.f};
-}
-}
+}  // namespace Constants
+}  // namespace HybridAStar
 
-#endif // CONSTANTS
-
+#endif  // CONSTANTS

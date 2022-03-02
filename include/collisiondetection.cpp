@@ -2,6 +2,4 @@
 
 CollisionDetection::CollisionDetection()
 {
-
 }
-
